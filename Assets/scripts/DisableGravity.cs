@@ -11,18 +11,19 @@ public class DisableGravity : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    float map(float s, float a1, float a2, float b1, float b2)
+    float Remap(float source, float sourceFrom, float sourceTo, float targetFrom, float targetTo)
     {
-        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+        return targetFrom + (source - sourceFrom) * (targetTo - targetFrom) / (sourceTo - sourceFrom);
     }
 
     private void Update()
     {
-        if (rb2D.velocity.magnitude < 0.15)
-        {
-            rb2D.velocity = new Vector2(0,0);
-        }
+        float Multiply = Mathf.Clamp(Remap(rb2D.velocity.magnitude, 0.01f, 0.15f, 0f, 1f), 0f, 1f);
         Debug.Log(rb2D.velocity.magnitude);
-        Debug.Log("Stopped " + map(rb2D.velocity.magnitude, 10f, 1f, 0f, 0f));
+        Debug.Log("Stopped " + Multiply);
+        if (rb2D.velocity.magnitude < 0.15f)
+        {
+            rb2D.velocity = rb2D.velocity * Multiply;
+        }
     }
 }
