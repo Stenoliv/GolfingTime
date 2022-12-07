@@ -15,8 +15,7 @@ public class PlayerController : MonoBehaviour
     bool changewind = false;
     private Rigidbody2D rb;
     public float forcemult = 3;
-    Vector2 force = new Vector2();
-    Vector2 wind = new Vector2();
+    private int slag = 0;
 
     private void OnMouseDrag()
     {
@@ -24,9 +23,10 @@ public class PlayerController : MonoBehaviour
         {
             rxcord = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
             rycord = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-            force.x = (dxcord - rxcord);
-            force.y = (dycord - rycord);
-
+            GlobalVariables.force.x = (dxcord - rxcord);
+            GlobalVariables.force.y = (dycord - rycord);
+            GlobalVariables.force.x = Mathf.Clamp(GlobalVariables.force.x, -2f, 2f) * forcemult;
+            GlobalVariables.force.y = Mathf.Clamp(GlobalVariables.force.y, -2f, 2f) * forcemult;
         }
     }
     void OnMouseDown()
@@ -43,10 +43,9 @@ public class PlayerController : MonoBehaviour
         canDrag = false;
         if (Input.GetMouseButtonUp(0) == true && rb.velocity.magnitude <= 0.02f)
         {
-            force.x = Mathf.Clamp(force.x, -2f,2f);
-            force.y = Mathf.Clamp(force.y, -2f, 2f);
-            rb.AddForce(force * forcemult, ForceMode2D.Impulse);
+            rb.AddForce(GlobalVariables.force, ForceMode2D.Impulse);
             changewind = true;
+            GlobalVariables.Strokes++;
         }
     }
     private void Start()
@@ -56,11 +55,11 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if(rb.velocity.magnitude >= 0.8f)
+        if(rb.velocity.magnitude >= 0.02f)
         {
-            rb.AddForce(wind, ForceMode2D.Force);
+            rb.AddForce(GlobalVariables.wind * Time.deltaTime, ForceMode2D.Force);
         }
-        if(changewind == true)
+        if(changewind == true && rb.velocity.magnitude == 0.0f)
         {
             winder();
         }
@@ -68,8 +67,8 @@ public class PlayerController : MonoBehaviour
     private void winder() 
     {
         changewind = false;
-        wind.x = UnityEngine.Random.Range(-0.5f, 0.5f);
-        Debug.Log(wind);
+        GlobalVariables.wind.x = UnityEngine.Random.Range(-1000, 1000);
+        Debug.Log(GlobalVariables.wind);
     }
 }
 
