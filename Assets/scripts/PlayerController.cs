@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public float forcemult = 3;
     private int slag = 0;
+    public Collider2D ballcollider;
+    public Collider2D groundcollider;
+
 
     private void OnMouseDrag()
     {

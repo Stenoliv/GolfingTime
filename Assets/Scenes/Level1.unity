@@ -2731,6 +2731,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40936dce3a8fcc47a3da938293171d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &2056632188 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8897874923650118750, guid: c734ba88288321949b6a9c06c953c2ab, type: 3}
+  m_PrefabInstance: {fileID: 8897874924545350920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2085886403
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,6 +3054,14 @@ PrefabInstance:
       propertyPath: forcemult
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 8897874923650118738, guid: c734ba88288321949b6a9c06c953c2ab, type: 3}
+      propertyPath: ballcollider
+      value: 
+      objectReference: {fileID: 2056632188}
+    - target: {fileID: 8897874923650118738, guid: c734ba88288321949b6a9c06c953c2ab, type: 3}
+      propertyPath: groundcollider
+      value: 
+      objectReference: {fileID: 1466317774}
     - target: {fileID: 8897874923650118749, guid: c734ba88288321949b6a9c06c953c2ab, type: 3}
       propertyPath: m_Name
       value: Player
