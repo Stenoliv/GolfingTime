@@ -15,9 +15,7 @@ public class PlayerController : MonoBehaviour
     bool changewind = false;
     private Rigidbody2D rb;
     public float forcemult = 3;
-    private int slag = 0;
-    public Collider2D ballcollider;
-    public Collider2D groundcollider;
+    public int MaxSpeed = 4;
 
 
     private void OnMouseDrag()
@@ -28,8 +26,8 @@ public class PlayerController : MonoBehaviour
             rycord = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
             GlobalVariables.force.x = (dxcord - rxcord);
             GlobalVariables.force.y = (dycord - rycord);
-            GlobalVariables.force.x = Mathf.Clamp(GlobalVariables.force.x, -2f, 2f) * forcemult;
-            GlobalVariables.force.y = Mathf.Clamp(GlobalVariables.force.y, -2f, 2f) * forcemult;
+            GlobalVariables.force = (GlobalVariables.force) * forcemult;
+            GlobalVariables.force = Vector2.ClampMagnitude(GlobalVariables.force, MaxSpeed);
         }
     }
     void OnMouseDown()
@@ -58,11 +56,11 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if(rb.velocity.magnitude >= 0.02f)
+        if(rb.velocity.x >= 0.1f)
         {
             rb.AddForce(GlobalVariables.wind * Time.deltaTime, ForceMode2D.Force);
         }
-        if(changewind == true && rb.velocity.magnitude == 0.0f)
+        if(changewind == true && rb.velocity.x <= 0.001f)
         {
             winder();
         }

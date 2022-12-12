@@ -16,11 +16,9 @@ public class DisableGravity : MonoBehaviour
         return targetFrom + (source - sourceFrom) * (targetTo - targetFrom) / (sourceTo - sourceFrom);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        float Multiply = Mathf.Clamp(Remap(rb2D.velocity.magnitude, 0.01f, 0.15f, 0f, 1f), 0f, 1f);
-        Debug.Log(rb2D.velocity.magnitude);
-        Debug.Log("Stopped " + Multiply);
+        float Multiply = Remap(rb2D.velocity.magnitude, 0.00001f, 0.15f, 0f, 1f);
         if (rb2D.velocity.magnitude < 0.15f)
         {
             rb2D.velocity = rb2D.velocity * Multiply;
