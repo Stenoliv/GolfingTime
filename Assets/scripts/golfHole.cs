@@ -41,13 +41,7 @@ public class golfHole : MonoBehaviour
             GlobalVariables.Strokes = 0;
         }
 
-        GameEndHUD.SetActive(true);    
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameEndHUD.SetActive(true);
+        GlobalVariables.InHole = true;
     }
 }

@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour
             GlobalVariables.Score = 0;
             GlobalVariables.Strokes = 0;
         }
-
-        SceneManager.LoadScene(name);
         Debug.Log("Load next Scene");
+        SceneManager.LoadScene(name);
+        GlobalVariables.InHole = false;
     }
 
     public void QuitGame()

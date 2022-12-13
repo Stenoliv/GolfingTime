@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private void OnMouseUp()
     {
         canDrag = false;
-        if (Input.GetMouseButtonUp(0) == true && rb.velocity.magnitude <= 0.02f)
+        if (Input.GetMouseButtonUp(0) == true && rb.velocity.magnitude <= 0.02f && GlobalVariables.InHole == false)
         {
             rb.AddForce(GlobalVariables.force, ForceMode2D.Impulse);
             changewind = true;

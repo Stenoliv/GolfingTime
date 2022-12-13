@@ -11,4 +11,5 @@ public class GlobalVariables
     public static int Level1 = 0;
     public static int Level2 = 0;
     public static int Level3 = 0;
+    public static bool InHole = false;
 }
