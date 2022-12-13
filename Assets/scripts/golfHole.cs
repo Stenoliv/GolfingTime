@@ -16,7 +16,7 @@ public class golfHole : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if Level1
+        // Check what level
         if (SceneManager.GetActiveScene().name == "Level1")
         {
             GlobalVariables.Level1 = GlobalVariables.Strokes;
@@ -25,8 +25,15 @@ public class golfHole : MonoBehaviour
         } else if (SceneManager.GetActiveScene().name == "Level2")
         {
             GlobalVariables.Level2 = GlobalVariables.Strokes;
-            GlobalVariables.Score = GlobalVariables.Strokes;
+            GlobalVariables.Score = GlobalVariables.Strokes + GlobalVariables.Score;
             GlobalVariables.Strokes = 0;
+        }
+        else if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            GlobalVariables.Level3 = GlobalVariables.Strokes;
+            GlobalVariables.Score = GlobalVariables.Strokes + GlobalVariables.Score;
+            GlobalVariables.Strokes = 0;
+
         }
         else
         {

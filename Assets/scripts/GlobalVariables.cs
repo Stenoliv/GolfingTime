@@ -10,4 +10,5 @@ public class GlobalVariables
     public static int Strokes = 0;
     public static int Level1 = 0;
     public static int Level2 = 0;
+    public static int Level3 = 0;
 }

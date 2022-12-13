@@ -16,6 +16,6 @@ public class Scoreboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreboard.text = "Course Over \n\nLevel1 - Par: 3 / Your score: " + GlobalVariables.Level1 + "\n\nLevel2 - Par: 3 / Your score: " + (GlobalVariables.Score - GlobalVariables.Level1) + "\n\nLevel3 - Par: 3 / Your score: " + GlobalVariables.Level2 + "\n\nTotal Score: " + GlobalVariables.Score;
+        scoreboard.text = "Course Over \n\nLevel1 - Par: 3 / Your score: " + GlobalVariables.Level1 + "\n\nLevel2 - Par: 3 / Your score: " + (GlobalVariables.Level2) + "\n\nLevel3 - Par: 3 / Your score: " + GlobalVariables.Level3 + "\nTotal Score: " + GlobalVariables.Score;
     }
 }
